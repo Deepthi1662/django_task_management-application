@@ -1,0 +1,11 @@
+html, body * { box-sizing: border-box; font-family: 'Open Sans', sans-serif; }
+
+.region_name{
+	color:teal !important;
+}
+.select_doctor_table{
+    border-radius: 5px;
+    width: 50%;
+    margin: 0px auto;
+    float: none;
+}

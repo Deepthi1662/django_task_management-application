@@ -1,0 +1,210 @@
+{% load staticfiles %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+     <title>Welcome | DoTask</title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/materailize-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/material.css' %}">
+</head>
+
+<body class="theme-blue">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon">
+            <i class="material-icons">search</i>
+        </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search">
+            <i class="material-icons">close</i>
+        </div>
+    </div>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="index.html">DOTASK - DASHBOARD</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    {% if user.is_authenticated %}
+                    <li class="dropdown"><a href="{% url 'users:logout' %}" >Logout&nbsp;</a></li>
+                    {% else %}
+                    <li class="dropdown"><a href="{% url 'users:registration' %}" >&nbsp;Signup</a></li>
+                    <li class="dropdown"><a href="{%url 'users:login' %}" >&nbsp;SignIn</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+                   
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- User Info -->
+            <div class="user-info">
+                <div class="image">
+                    <img src="{%static 'images/index.jpeg'%}" width="48" height="48" alt="User" />
+                </div>
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.username}}</div>
+                    <div class="email">{{user.email}}</div>
+                    
+                </div>
+            </div>
+            <!-- #User Info -->
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li class="header"></li>
+                    <li class="active">
+                        <a href="{% url 'users:dashboard'%}">
+                            <i class="material-icons">home</i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">widgets</i>
+                            <span>Tasks</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="javascript:void(0);" class="menu-toggle">
+                                    <span>Tasks</span>
+                                </a>
+                                <ul class="ml-menu">                                    
+                                    <li>
+                                        <a href="{% url 'users:admin_tasks' %}">Tasks</a>
+                                    </li>                                  
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                     <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">assignment</i>
+                            <span>Assign Task</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="{%url 'users:admin_asign_task' %}">Asign Task</a>
+                            </li>
+                        </ul>
+                    </li>    
+                </ul>
+            </div>
+            <!-- #Menu -->
+            <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    &copy; 2018 <a href="javascript:void(0);">DoTask-A Perpect Task Manager</a>.
+                </div>
+                <div class="version">
+                    <b>Version: </b> 1.0
+                </div>
+            </div>
+            <!-- #Footer -->
+        </aside>
+        <!-- #END# Left Sidebar -->
+        <!-- Right Sidebar -->
+        <aside id="rightsidebar" class="right-sidebar">
+            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                <li role="presentation" class="active"><a href="#skins" data-toggle="tab">settings 1</a></li>
+                <li role="presentation"><a href="#settings" data-toggle="tab">settings</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active in active" id="skins">
+                    <ul class="demo-choose-skin">
+                        
+                    </ul>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="settings">
+                    <div class="demo-settings">
+                    
+                        
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!-- #END# Right Sidebar -->
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>BASIC CARD</h2>
+            </div>
+            <div class="row clearfix">
+                {% for task in admin_tasks %}
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                {{task.name}}<small>Done : {{task.completed}}</small><br><small>reporter : {{task.reporter}}</small>
+                            </h2>
+                        </div>
+                        <div class="body">
+                           {{task.discription }}
+
+                        </div>
+                    
+    
+                    </div>
+                </div>
+                {% endfor %}    
+            
+                
+            </div>
+           
+        </div>
+    </section>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/waves.js' %}"></script>
+    <script src="{% static 'js/admin.js' %}"></script>
+</body>
+
+</html>

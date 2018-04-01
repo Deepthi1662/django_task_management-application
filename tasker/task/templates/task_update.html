@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{{request.user.username}}{{block.super}}{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row" style="margin-top: 100px;">
+		<form action="" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+	         {{ form.as_p }}
+	    <input type="submit" value="Update" />
+		</form>
+	</div>
+</div>		
+{% endblock %}
