@@ -17,11 +17,13 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from common.views import Home
 
 urlpatterns = [
      url(r'^admin/', admin.site.urls),
      url(r'^users/', include('users.urls')),
-     url(r'tasks/', include('task.urls')),
+     url(r'^tasks/', include('task.urls')),
+     url(r'^', Home.as_view(), name='home'),
 ]
 
 if settings.DEBUG:
